@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Àlgebra en Acció! · 2n d'ESO Matemàtiques</title>
+  <meta name="description" content="Portal educatiu d'Àlgebra per a 2n d'ESO amb Disseny Universal per a l'Aprenentatge (DUA), materials de consulta visuals i 5 simuladors interactius.">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/simulators.css">
+</head>
+<body>
+
+  <!-- Capçalera i Barra Superior DUA -->
+  <header class="site-header">
+    <div class="header-top">
+      <div class="brand">
+        <span class="brand-icon" aria-hidden="true">📐</span>
+        <div class="brand-text">
+          <h1>Àlgebra en Acció!</h1>
+          <p>2n d'ESO · Matemàtiques · Aprèn, experimenta i manipula al teu ritme</p>
+        </div>
+      </div>
+
+      <!-- Barra d'eines d'Accessibilitat DUA -->
+      <div class="dua-toolbar" aria-label="Eines d'accessibilitat i lectura">
+        <button id="btn-speak-global" class="dua-btn" title="Llegeix el text seleccionat o la secció en veu alta">
+          🔊 Llegeix
+        </button>
+        <button id="btn-easy-read" class="dua-btn" title="Activa la lletra de fàcil lectura i més espaiat (Recomanat per a dislèxia)">
+          👁️ Lectura Fàcil
+        </button>
+        <div style="display:flex; gap:2px;">
+          <button id="btn-font-minus" class="dua-btn" title="Redueix la mida de lletra">A-</button>
+          <button id="btn-font-plus" class="dua-btn" title="Augmenta la mida de lletra">A+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Selector d'Itineraris d'Aprenentatge DUA -->
+    <div class="itinerary-selector-container">
+      <div class="itinerary-label">
+        <span>🎯 El teu itinerari d'avui:</span>
+      </div>
+      <div class="itinerary-pills" role="radiogroup" aria-label="Selecció d'itinerari">
+        <button class="itinerary-pill support" data-route="support" title="Consolidació, suport visual pas a pas, números petits">
+          🟢 Ruta Suport (Pas a pas)
+        </button>
+        <button class="itinerary-pill standard active" data-route="standard" title="Nivell competencial estàndard de 2n d'ESO">
+          🟡 Ruta Estàndard
+        </button>
+        <button class="itinerary-pill challenge" data-route="challenge" title="Enriquiment, patrons avançats i reptes d'investigació">
+          🔵 Ruta Repte (Altes Capacitats)
+        </button>
+      </div>
+      <div id="student-progress-badge" style="font-size:0.85rem; color:#f8fafc;">
+        🏆 Tasques assolides: <strong>0 de 5</strong>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navegació de Tasques -->
+  <nav class="main-nav" aria-label="Navegació principal per tasques">
+    <div class="nav-container">
+      <button class="nav-item active" data-tab="inici">🏠 Inici</button>
+      <button class="nav-item" data-tab="tasca1">🔢 1. Patrons</button>
+      <button class="nav-item" data-tab="tasca2">📖 2. Diccionari</button>
+      <button class="nav-item" data-tab="tasca3">🟩 3. Àlgebra Tiles</button>
+      <button class="nav-item" data-tab="tasca4">⚖️ 4. La Balança</button>
+      <button class="nav-item" data-tab="tasca5">🕵️ 5. Problemes</button>
+      <button class="nav-item" data-tab="glossari">💡 Glossari & Docents</button>
+    </div>
+  </nav>
+
+  <!-- Contingut Principal -->
+  <main class="main-content">
+
+    <!-- ====================================================================
+         PESTANYA: INICI
+         ==================================================================== -->
+    <section id="tab-inici" class="tab-pane active">
+      <div class="task-header-box" style="border-left-color: #0ea5e9;">
+        <span class="task-tag">Benvinguda</span>
+        <h2 class="task-title">Benvinguts i benvingudes al món de l'Àlgebra! 🚀</h2>
+        <p class="task-description">
+          A primària feies càlculs amb nombres coneguts (com $3 + 5 = 8$). A secundària fem un salt gegant: utilitzem 
+          <strong>lletres ($x$, $n$, $y$)</strong> per representar quantitats desconegudes, regles secretes i solucions a enigmes reals.
+        </p>
+      </div>
+
+      <div class="task-grid" style="grid-template-columns: 1fr 1fr; margin-bottom: 2rem;">
+        <div class="theory-card">
+          <h3 class="card-title">🔍 Per a què serveix l'Àlgebra a la vida real?</h3>
+          <div class="theory-block">
+            <ul>
+              <li><strong>🎮 Videojocs:</strong> Per programar el moviment dels personatges, la velocitat d'un salt o la puntuació segons els punts aconseguits ($Punts = 10 \cdot monedes + 50$).</li>
+              <li><strong>📱 Tecnologia i xarxes:</strong> Els algoritmes que decideixen quins vídeos t'agraden fan servir fórmules algebraiques complexes.</li>
+              <li><strong>🛒 Economia domèstica:</strong> Saber quant costa un sol producte quan compres una oferta o un pack familiar.</li>
+              <li><strong>🏗️ Arquitectura i ciència:</strong> Calcular si un pont aguantarà el pes dels cotxes o preveure el canvi climàtic.</li>
+            </ul>
+          </div>
+          <div class="visual-tip-box blue">
+            💡 <strong>La regla d'or:</strong> Una lletra en matemàtiques no és una paraula, és una <em>capsa sorpresa</em> que guarda un valor numèric!
+          </div>
+        </div>
+
+        <div class="theory-card">
+          <h3 class="card-title">🧭 Com funciona aquest espai?</h3>
+          <div class="theory-block">
+            <p>Aquest lloc web està pensat perquè cadascú aprengui al seu ritme:</p>
+            <ul>
+              <li><strong>🟢 Ruta Suport:</strong> Amb suports visuals, passos guiats i nombres senzills (ideal si vens amb dubtes de 6è o necessites anar a poc a poc).</li>
+              <li><strong>🟡 Ruta Estàndard:</strong> Les tasques competencials clau del curs de 2n d'ESO.</li>
+              <li><strong>🔵 Ruta Repte:</strong> Enigmes i situacions més complexes pensats per a qui vol anar més enllà (altes capacitats).</li>
+            </ul>
+            <p>Tens a la teva disposició el botó <strong>🔊 Llegeix</strong> per escoltar qualsevol text i <strong>👁️ Lectura Fàcil</strong> per canviar el format de la lletra.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Targetes d'accés directe a les 5 tasques -->
+      <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color:#1e293b;">Tria la teva missió:</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;">
+        <div class="theory-card" style="cursor:pointer; text-align:center;" data-nav-target="tasca1">
+          <div style="font-size:2.5rem; margin-bottom:0.5rem;">🔢</div>
+          <h4 style="font-size:1.1rem; margin-bottom:0.3rem;">1. Patrons</h4>
+          <p style="font-size:0.85rem; color:#64748b;">Descodifica figures geomètriques i troba la regla general.</p>
+        </div>
+        <div class="theory-card" style="cursor:pointer; text-align:center;" data-nav-target="tasca2">
+          <div style="font-size:2.5rem; margin-bottom:0.5rem;">📖</div>
+          <h4 style="font-size:1.1rem; margin-bottom:0.3rem;">2. Diccionari</h4>
+          <p style="font-size:0.85rem; color:#64748b;">Aprèn a traduir paraules habituals al llenguatge dels símbols.</p>
+        </div>
+        <div class="theory-card" style="cursor:pointer; text-align:center;" data-nav-target="tasca3">
+          <div style="font-size:2.5rem; margin-bottom:0.5rem;">🟩</div>
+          <h4 style="font-size:1.1rem; margin-bottom:0.3rem;">3. Àlgebra Tiles</h4>
+          <p style="font-size:0.85rem; color:#64748b;">Manipula rajoles, suma monomis i cancel·la parelles zero.</p>
+        </div>
+        <div class="theory-card" style="cursor:pointer; text-align:center;" data-nav-target="tasca4">
+          <div style="font-size:2.5rem; margin-bottom:0.5rem;">⚖️</div>
+          <h4 style="font-size:1.1rem; margin-bottom:0.3rem;">4. La Balança</h4>
+          <p style="font-size:0.85rem; color:#64748b;">Resol equacions mantenint l'equilibri físic a banda i banda.</p>
+        </div>
+        <div class="theory-card" style="cursor:pointer; text-align:center;" data-nav-target="tasca5">
+          <div style="font-size:2.5rem; margin-bottom:0.5rem;">🕵️</div>
+          <h4 style="font-size:1.1rem; margin-bottom:0.3rem;">5. Problemes</h4>
+          <p style="font-size:0.85rem; color:#64748b;">Converteix-te en detectiu matemàtic seguint els 4 passos de Pólya.</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ====================================================================
+         TASCA 1: PATRONS I GENERALITZACIÓ
+         ==================================================================== -->
+    <section id="tab-tasca1" class="tab-pane">
+      <div class="task-header-box">
+        <div class="task-badge-row">
+          <span class="task-tag">Tasca 1</span>
+          <span style="font-size:0.85rem; color:#64748b;">Generalització i sèries visuals</span>
+        </div>
+        <h2 class="task-title">El Descodificador de Patrons 🔢</h2>
+        <p class="task-description">
+          Com podem saber quants elements tindrà una figura gegant sense haver-los de dibuixar tots d'un en un? 
+          L'àlgebra ens permet crear una <strong>fórmula general</strong> que funciona per a qualsevol pas!
+        </p>
+      </div>
+
+      <div class="task-grid">
+        <!-- Columna Esquerra: Teoria i Consulta -->
+        <div class="theory-card">
+          <h3 class="card-title">📚 Material de Consulta</h3>
+
+          <div class="theory-block route-section support-content">
+            <h4>🟢 Què és un patró? (Pas a pas)</h4>
+            <p>Un patró és una seqüència de figures o nombres que creix seguint una regla fixa.</p>
+            <p>Per descobrir la regla, pregunta't sempre dues coses:</p>
+            <ol style="padding-left:1.2rem; margin-bottom:0.5rem; font-size:0.95rem;">
+              <li><strong>Quants elements hi ha al Pas 1?</strong> (Punt de sortida).</li>
+              <li><strong>Quants elements nous s'afegeixen a cada pas següent?</strong></li>
+            </ol>
+          </div>
+
+          <div class="visual-tip-box blue">
+            💡 <strong>Exemple clau:</strong> Si comença amb 1 element i cada pas sumem 2 nous:
+            <br>• Pas 1: $1 + 2(0) = 1$
+            <br>• Pas 2: $1 + 2(1) = 3$
+            <br>• Pas 3: $1 + 2(2) = 5$
+            <br>• <strong>Per al Pas $n$:</strong> la regla serà $2n - 1$ (o $2n + 1$ si comença en 3).
+          </div>
+
+          <div class="theory-block route-section challenge-content">
+            <h4>🔵 Repte d'enriquiment (Altes Capacitats)</h4>
+            <p>
+              I si el patró creix en dues dimensions (com un quadrat d'amplada $n$ i alçada $n$)? 
+              Aleshores la fórmula tindrà $n^2$! Prova a predir figures no lineals al simulador.
+            </p>
+          </div>
+        </div>
+
+        <!-- Columna Dreta: Simulador Interactiu -->
+        <div class="simulator-card">
+          <div class="simulator-header">
+            <span class="sim-title">🎮 Simulador de Patrons</span>
+            <select id="pattern-select" style="padding:0.4rem 0.7rem; border-radius:var(--radius-sm); border:1px solid #cbd5e1; font-weight:600; font-size:0.85rem;"></select>
+          </div>
+
+          <p id="pattern-task-desc" style="font-size:0.95rem; color:#475569; margin-bottom:1rem;"></p>
+
+          <!-- Escenari visual -->
+          <div class="pattern-visual-stage" id="pattern-visual-container"></div>
+
+          <!-- Comprovador de regla -->
+          <div class="pattern-controls-bar">
+            <div class="pattern-input-group">
+              <label for="pattern-formula-input" style="font-size:0.9rem; font-weight:700;">Regla general:</label>
+              <input type="text" id="pattern-formula-input" placeholder="Ex: 2n + 1" aria-label="Escriu la fórmula">
+            </div>
+            <button class="sim-btn" id="pattern-check-btn">🔍 Comprova Fórmula</button>
+          </div>
+
+          <!-- Calculadora de futur pas -->
+          <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:var(--radius-sm); padding:0.8rem; display:flex; align-items:center; gap:0.8rem; flex-wrap:wrap;">
+            <label for="pattern-test-step-input" style="font-size:0.85rem; font-weight:700;">🔮 Màquina del temps: Quants elements tindrà al Pas:</label>
+            <input type="number" id="pattern-test-step-input" value="10" min="1" max="1000" style="width:70px; padding:0.3rem 0.5rem; border:1px solid #cbd5e1; border-radius:4px; font-weight:700;">
+            <button class="sim-btn secondary" id="pattern-test-btn" style="padding:0.4rem 0.8rem; font-size:0.85rem;">Calcula</button>
+            <span id="pattern-test-step-result" style="font-size:0.9rem; font-weight:600; color:#1e293b;"></span>
+          </div>
+
+          <div id="pattern-feedback" class="sim-feedback"></div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ====================================================================
+         TASCA 2: DICCIONARI ALGEBRAIC
+         ==================================================================== -->
+    <section id="tab-tasca2" class="tab-pane">
+      <div class="task-header-box">
+        <div class="task-badge-row">
+          <span class="task-tag">Tasca 2</span>
+          <span style="font-size:0.85rem; color:#64748b;">Llenguatge natural a algebraic</span>
+        </div>
+        <h2 class="task-title">El Diccionari de les Matemàtiques 📖</h2>
+        <p class="task-description">
+          L'àlgebra és com un idioma universal. Aprendrem a traduir frases del nostre dia a dia a expressions matemàtiques clares i concises.
+        </p>
+      </div>
+
+      <div class="task-grid">
+        <!-- Teoria i Consulta -->
+        <div class="theory-card">
+          <h3 class="card-title">📚 Taula de Traducció Ràpida</h3>
+
+          <div class="theory-block">
+            <p>Quan llegim un enunciat, certes paraules clau ens diuen quina operació hem de fer:</p>
+            <table style="width:100%; border-collapse:collapse; font-size:0.9rem; margin-top:0.6rem;">
+              <thead>
+                <tr style="background:#f1f5f9; text-align:left; border-bottom:2px solid #cbd5e1;">
+                  <th style="padding:0.5rem;">Paraula en català</th>
+                  <th style="padding:0.5rem;">Operació</th>
+                  <th style="padding:0.5rem;">Exemple</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom:1px solid #e2e8f0;">
+                  <td style="padding:0.5rem;">Un nombre desconegut</td>
+                  <td style="padding:0.5rem;">Lletra</td>
+                  <td style="padding:0.5rem;"><strong style="color:var(--color-variable);">x</strong></td>
+                </tr>
+                <tr style="border-bottom:1px solid #e2e8f0;">
+                  <td style="padding:0.5rem;">Augmentat, suma, més gran</td>
+                  <td style="padding:0.5rem;">Suma ($+$)</td>
+                  <td style="padding:0.5rem;">$x + 5$</td>
+                </tr>
+                <tr style="border-bottom:1px solid #e2e8f0;">
+                  <td style="padding:0.5rem;">Disminuït, diferència, menys</td>
+                  <td style="padding:0.5rem;">Resta ($-$)</td>
+                  <td style="padding:0.5rem;">$x - 3$</td>
+                </tr>
+                <tr style="border-bottom:1px solid #e2e8f0;">
+                  <td style="padding:0.5rem;">Doble, triple, vegades</td>
+                  <td style="padding:0.5rem;">Multiplicació ($\cdot$)</td>
+                  <td style="padding:0.5rem;">$2x$, $3x$</td>
+                </tr>
+                <tr style="border-bottom:1px solid #e2e8f0;">
+                  <td style="padding:0.5rem;">La meitat, un terç, repartit</td>
+                  <td style="padding:0.5rem;">Divisió ($/$)</td>
+                  <td style="padding:0.5rem;">$\frac{x}{2}$, $\frac{x}{3}$</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="visual-tip-box purple">
+            ⚠️ <strong>Atenció al parèntesi:</strong>
+            <br>• "El doble de la suma d'un nombre i 3" $\rightarrow 2(x + 3)$
+            <br>• "El doble d'un nombre, més 3" $\rightarrow 2x + 3$
+            <br><em>Una petita coma o parèntesi ho canvia tot!</em>
+          </div>
+        </div>
+
+        <!-- Simulador d'Emparellament -->
+        <div class="simulator-card">
+          <div class="simulator-header">
+            <span class="sim-title">🎮 Laboratori d'Emparellament</span>
+            <div style="display:flex; gap:0.5rem; align-items:center;">
+              <select id="dict-level-select" style="padding:0.35rem 0.6rem; border-radius:var(--radius-sm); border:1px solid #cbd5e1; font-weight:700; font-size:0.85rem;">
+                <option value="support">🟢 Nivell Suport</option>
+                <option value="standard" selected>🟡 Nivell Estàndard</option>
+                <option value="challenge">🔵 Nivell Repte</option>
+              </select>
+              <button id="dict-reset-btn" class="sim-btn secondary" style="padding:0.35rem 0.7rem; font-size:0.8rem;">🔄 Reinicia</button>
+            </div>
+          </div>
+
+          <div class="dict-board">
+            <div class="dict-instructions">
+              👆 <strong>Com es juga:</strong> Fes clic en una targeta de l'esquerra (Frase) i després fes clic en la targeta de la dreta que tingui la seva fórmula correcta.
+            </div>
+
+            <div class="dict-match-grid">
+              <!-- Columna Frases -->
+              <div>
+                <div class="dict-column-title">🗣️ Llenguatge Quotidià</div>
+                <div class="dict-cards-list" id="dict-phrases-col"></div>
+              </div>
+
+              <!-- Columna Expressions Algebraiques -->
+              <div>
+                <div class="dict-column-title">🧮 Llenguatge Algebraic</div>
+                <div class="dict-cards-list" id="dict-maths-col"></div>
+              </div>
+            </div>
+
+            <div id="dict-feedback" class="sim-feedback"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ====================================================================
+         TASCA 3: ÀLGEBRA TILES I MONOMIS
+         ==================================================================== -->
+    <section id="tab-tasca3" class="tab-pane">
+      <div class="task-header-box">
+        <div class="task-badge-row">
+          <span class="task-tag">Tasca 3</span>
+          <span style="font-size:0.85rem; color:#64748b;">Monomis i termes semblants</span>
+        </div>
+        <h2 class="task-title">L'Hort d'Àlgebra Tiles 🟩</h2>
+        <p class="task-description">
+          Com sumem expressions com $3x + 2x$ o $5x - 3$? Amb les <strong>rajoles algebraiques</strong> pots veure i manipular 
+          els monomis amb els teus propis ulls.
+        </p>
+      </div>
+
+      <div class="task-grid">
+        <!-- Teoria i Consulta -->
+        <div class="theory-card">
+          <h3 class="card-title">📚 Anatomia d'un Monomi</h3>
+
+          <div class="theory-block">
+            <div style="background:#f8fafc; border:2px solid #e2e8f0; border-radius:var(--radius-sm); padding:1rem; text-align:center; margin-bottom:1rem;">
+              <span style="font-size:2rem; font-weight:800;">
+                <span style="color:#d97706;" title="Signe i coeficient numèric">-5</span><span style="color:#0284c7;" title="Part literal (variable)">x</span><sup style="color:#9333ea; font-size:1.2rem;" title="Grau o exponent">2</sup>
+              </span>
+              <div style="display:flex; justify-content:space-around; margin-top:0.6rem; font-size:0.85rem;">
+                <span style="color:#d97706;"><strong>-5:</strong> Coeficient</span>
+                <span style="color:#0284c7;"><strong>x:</strong> Part Literal</span>
+                <span style="color:#9333ea;"><strong>2:</strong> Grau</span>
+              </div>
+            </div>
+
+            <h4>🍅 Termes Semblants ("Pomes amb pomes")</h4>
+            <p>
+              Només podem sumar o restar monomis si tenen <strong>exactament la mateixa part literal</strong> (la mateixa lletra i el mateix exponent):
+            </p>
+            <ul>
+              <li>✅ $3x + 2x = 5x$ (Són de la mateixa família!)</li>
+              <li>❌ $3x + 2$ <strong>NO</strong> es pot sumar (un té lletra i l'altre no). Es queda així.</li>
+              <li>❌ $2x^2 + 4x$ <strong>NO</strong> es pot ajuntar (tenen exponents diferents).</li>
+            </ul>
+          </div>
+
+          <div class="visual-tip-box">
+            ⚖️ <strong>La Parella Zero:</strong>
+            <br>Si tens una rajola positiva $+1$ i n'arriba una de negativa $-1$, es neutralitzen i desapareixen: 
+            <br>$+1 + (-1) = 0$ &nbsp;|&nbsp; $+x + (-x) = 0$.
+          </div>
+        </div>
+
+        <!-- Simulador Tiles -->
+        <div class="simulator-card">
+          <div class="simulator-header">
+            <span class="sim-title">🎮 Taller de Rajoles Manipulatives</span>
+            <div style="display:flex; gap:0.4rem; align-items:center;">
+              <select id="tiles-challenge-select" style="padding:0.35rem 0.6rem; border-radius:var(--radius-sm); border:1px solid #cbd5e1; font-weight:700; font-size:0.82rem;"></select>
+              <button id="tiles-clear-btn" class="sim-btn secondary" style="padding:0.35rem 0.6rem; font-size:0.8rem;">🧹 Neteja</button>
+            </div>
+          </div>
+
+          <div class="tiles-container">
+            <!-- Informació del repte -->
+            <div id="tiles-challenge-info" style="display:none; background:#eff6ff; border-left:4px solid #3b82f6; padding:0.6rem 0.8rem; border-radius:var(--radius-sm); font-size:0.9rem;"></div>
+
+            <!-- Caixa d'eines -->
+            <div class="tiles-toolbox" id="tiles-toolbox-container"></div>
+
+            <!-- Espai de manipulació -->
+            <div class="tiles-workspace" id="tiles-workspace"></div>
+
+            <!-- Expressió en directe -->
+            <div class="tiles-expression-live">
+              <span style="font-size:0.9rem; opacity:0.8;">Expressió actual:</span>
+              <strong id="tiles-expression-text">0</strong>
+              <button id="tiles-cancel-zeros-btn" class="sim-btn success" style="font-size:0.82rem; padding:0.35rem 0.8rem;">
+                ✨ Cancel·la Parelles Zero
+              </button>
+            </div>
+
+            <div id="tiles-feedback" class="sim-feedback"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ====================================================================
+         TASCA 4: LA BALANÇA D'EQUACIONS DE 1R GRAU
+         ==================================================================== -->
+    <section id="tab-tasca4" class="tab-pane">
+      <div class="task-header-box">
+        <div class="task-badge-row">
+          <span class="task-tag">Tasca 4</span>
+          <span style="font-size:0.85rem; color:#64748b;">Equacions lineals i sentit d'equilibri</span>
+        </div>
+        <h2 class="task-title">La Balança en Equilibri ⚖️</h2>
+        <p class="task-description">
+          Una equació és com una balança de dos plats en perfecte equilibri. L'objectiu és descobrir quant pesa 
+          la caixa misteriosa $x$ sense que la balança es desequilibri mai.
+        </p>
+      </div>
+
+      <div class="task-grid">
+        <!-- Teoria i Consulta -->
+        <div class="theory-card">
+          <h3 class="card-title">📚 Com funciona una Equació?</h3>
+
+          <div class="theory-block">
+            <h4>🚫 Desmuntant la màgia de "passar a l'altre costat"</h4>
+            <p>
+              Sovint es diu que "el que suma passa restant a l'altre costat". Però en matemàtiques les coses no salten soles!
+            </p>
+            <p>
+              El que fem en realitat és <strong>la mateixa acció exacta als dos plats</strong> per mantenir la igualtat:
+            </p>
+            <ul>
+              <li>Si a la balança hi ha $x + 3 = 8$, i treus $3$ peses del plat esquerre, <strong>has de treure 3 peses del plat dret</strong> per no desequilibrar-la.</li>
+              <li>Així et queda: $x = 8 - 3 \rightarrow x = 5$!</li>
+            </ul>
+          </div>
+
+          <div class="visual-tip-box blue">
+            ⚖️ <strong>La regla d'or de les equacions:</strong>
+            <br>Qualsevol operació que facis a un membre de la igualtat, <em>has de fer-la exactament igual a l'altre membre</em>.
+          </div>
+
+          <div class="theory-block route-section challenge-content">
+            <h4>🔵 Incògnites a les dues bandes</h4>
+            <p>
+              Si tens $3x + 2 = x + 8$, el primer pas és treure una caixa $x$ de cada plat:
+              <br>$2x + 2 = 8$. Ara ja és una equació senzilla!
+            </p>
+          </div>
+        </div>
+
+        <!-- Simulador Balança -->
+        <div class="simulator-card">
+          <div class="simulator-header">
+            <span class="sim-title">🎮 Balança Interactiva</span>
+            <div style="display:flex; gap:0.4rem; align-items:center;">
+              <select id="balance-preset-select" style="padding:0.35rem 0.6rem; border-radius:var(--radius-sm); border:1px solid #cbd5e1; font-weight:700; font-size:0.82rem;"></select>
+              <button id="balance-reset-btn" class="sim-btn secondary" style="padding:0.35rem 0.6rem; font-size:0.8rem;">🔄</button>
+            </div>
+          </div>
+
+          <div class="balance-simulator">
+            <!-- Visor de l'equació -->
+            <div class="balance-equation-display">
+              <span id="balance-eq-left" class="equation-left">x + 3</span>
+              <span class="equation-equal">=</span>
+              <span id="balance-eq-right" class="equation-right">8</span>
+            </div>
+
+            <p style="font-size:0.85rem; color:#64748b; text-align:center;">
+              💡 <em><span id="balance-hint-text">Treu 3 peses de cada plat per deixar la x sola!</span></em>
+            </p>
+
+            <!-- Escenari Físic -->
+            <div class="balance-stage">
+              <!-- Pivot -->
+              <div class="balance-pivot"></div>
+
+              <!-- Barra oscil·lant -->
+              <div class="balance-beam" id="balance-beam">
+                <div class="balance-center-joint"></div>
+
+                <!-- Plat Esquerre -->
+                <div class="balance-pan-chain left">
+                  <div class="balance-plate" id="balance-plate-left"></div>
+                </div>
+
+                <!-- Plat Dret -->
+                <div class="balance-pan-chain right">
+                  <div class="balance-plate" id="balance-plate-right"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Botons d'Operacions Simultànies -->
+            <div class="balance-actions-grid">
+              <div class="balance-action-card">
+                <div class="balance-action-title">🔢 Modificar peses (+ / -) a tots dos plats</div>
+                <div class="action-btns-row">
+                  <button class="balance-op-btn" data-op="subC" data-val="1">➖ Resta 1</button>
+                  <button class="balance-op-btn" data-op="subC" data-val="2">➖ Resta 2</button>
+                  <button class="balance-op-btn" data-op="subC" data-val="3">➖ Resta 3</button>
+                  <button class="balance-op-btn" data-op="addC" data-val="1">➕ Suma 1</button>
+                </div>
+              </div>
+
+              <div class="balance-action-card">
+                <div class="balance-action-title">📦 Caixes 'x' i divisions a tots dos plats</div>
+                <div class="action-btns-row">
+                  <button class="balance-op-btn" data-op="subX" data-val="1">📦 Resta 1x</button>
+                  <button class="balance-op-btn" data-op="div" data-val="2">➗ Divideix ÷2</button>
+                  <button class="balance-op-btn" data-op="div" data-val="3">➗ Divideix ÷3</button>
+                </div>
+              </div>
+            </div>
+
+            <div id="balance-feedback" class="sim-feedback"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ====================================================================
+         TASCA 5: DETECTIUS DE PROBLEMES
+         ==================================================================== -->
+    <section id="tab-tasca5" class="tab-pane">
+      <div class="task-header-box">
+        <div class="task-badge-row">
+          <span class="task-tag">Tasca 5</span>
+          <span style="font-size:0.85rem; color:#64748b;">Mètode de 4 passos de George Pólya</span>
+        </div>
+        <h2 class="task-title">Detectius de Problemes 🕵️‍♂️</h2>
+        <p class="task-description">
+          Com resolem problemes del món real amb equacions? Seguirem el famós mètode del matemàtic George Pólya: 
+          4 passos clars per no perdre'ns mai.
+        </p>
+      </div>
+
+      <div class="task-grid">
+        <!-- Teoria i Consulta -->
+        <div class="theory-card">
+          <h3 class="card-title">📚 La Guia dels 4 Passos de Pólya</h3>
+
+          <div class="theory-block">
+            <div style="display:flex; flex-direction:column; gap:0.8rem;">
+              <div class="polya-step-box">
+                <div class="polya-step-header">
+                  <span class="polya-step-badge">1</span>
+                  <span>🔍 Entendre el problema i la incògnita</span>
+                </div>
+                <p style="font-size:0.88rem; margin:0;">
+                  Llegeix amb calma l'enunciat (fes servir el botó 🔊 si cal). Què ens pregunten? Tria quina dada serà la teva lletra <strong>x</strong>.
+                </p>
+              </div>
+
+              <div class="polya-step-box">
+                <div class="polya-step-header">
+                  <span class="polya-step-badge">2</span>
+                  <span>📝 Plantejar l'equació</span>
+                </div>
+                <p style="font-size:0.88rem; margin:0;">
+                  Tradueix la relació de l'enunciat a una igualtat matemàtica (com hem après a la Tasca 2).
+                </p>
+              </div>
+
+              <div class="polya-step-box">
+                <div class="polya-step-header">
+                  <span class="polya-step-badge">3</span>
+                  <span>⚖️ Resoldre l'equació</span>
+                </div>
+                <p style="font-size:0.88rem; margin:0;">
+                  Aïlla la <strong>x</strong> operant amb equilibri (com hem fet a la balança de la Tasca 4).
+                </p>
+              </div>
+
+              <div class="polya-step-box">
+                <div class="polya-step-header">
+                  <span class="polya-step-badge">4</span>
+                  <span>✅ Comprovar i respondre amb unitats</span>
+                </div>
+                <p style="font-size:0.88rem; margin:0;">
+                  Té sentit la resposta? (Ex: una edat no pot ser negativa ni una persona pot mesurar 50 metres). No oblidis posar les unitats (€, anys, metres...).
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Simulador Problemes -->
+        <div class="simulator-card">
+          <div class="simulator-header">
+            <span class="sim-title">🎮 Taller de Problemes Guiats</span>
+          </div>
+
+          <div class="polya-container">
+            <!-- Barra de selecció de problemes -->
+            <div class="problem-selector-bar" id="problems-tabs-container"></div>
+
+            <!-- Targeta de l'enunciat -->
+            <div class="problem-enunciat-card">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+                <span id="prob-tag" style="font-size:0.78rem; font-weight:800; background:#dbeafe; color:#1e40af; padding:0.2rem 0.5rem; border-radius:999px;"></span>
+                <button id="prob-speak-btn" class="dua-btn" style="background:#2563eb; font-size:0.75rem; padding:0.25rem 0.6rem;">🔊 Escolta Enunciat</button>
+              </div>
+              <h4 id="prob-title" style="font-size:1.15rem; font-weight:800; margin-bottom:0.4rem; color:#1e3a8a;"></h4>
+              <p id="prob-statement" style="color:#1e293b; font-size:1rem;"></p>
+            </div>
+
+            <!-- Ajuda de la incògnita -->
+            <div id="prob-unknown-hint" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:var(--radius-sm); padding:0.6rem 0.8rem; font-size:0.88rem; font-weight:600; color:#475569;"></div>
+
+            <!-- Pistes esglaonades -->
+            <div>
+              <div style="font-size:0.85rem; font-weight:700; color:#64748b; margin-bottom:0.3rem;">
+                💡 Pistes pas a pas (si t'encalles):
+              </div>
+              <div class="hints-accordion" id="prob-hints-list"></div>
+            </div>
+
+            <!-- Camp de resposta i validació -->
+            <div style="background:#f1f5f9; padding:0.9rem; border-radius:var(--radius-sm); display:flex; align-items:center; gap:0.6rem; flex-wrap:wrap; margin-top:0.5rem;">
+              <label for="prob-answer-input" style="font-weight:700; font-size:0.95rem;">La teva solució (x =):</label>
+              <input type="number" id="prob-answer-input" step="any" placeholder="Valor" style="width:100px; padding:0.5rem; border:2px solid #cbd5e1; border-radius:var(--radius-sm); font-size:1rem; font-weight:800;">
+              <span id="prob-unit-label" style="font-weight:700; color:#475569;"></span>
+              <button id="prob-check-btn" class="sim-btn" style="margin-left:auto;">Comprova Resposta</button>
+            </div>
+
+            <div id="prob-feedback" class="sim-feedback"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ====================================================================
+         PESTANYA: GLOSSARI I ORIENTACIONS DOCENTS
+         ==================================================================== -->
+    <section id="tab-glossari" class="tab-pane">
+      <div class="task-header-box" style="border-left-color: #6366f1;">
+        <span class="task-tag">Recursos i Inclusió</span>
+        <h2 class="task-title">Glossari Visual i Orientacions Docents (DUA) 💡</h2>
+        <p class="task-description">
+          Recull de termes clau per a l'alumnat i guia d'atenció a la diversitat a l'aula de 2n d'ESO.
+        </p>
+      </div>
+
+      <div class="task-grid">
+        <!-- Glossari -->
+        <div class="theory-card">
+          <h3 class="card-title">📖 Glossari de Termes Clau</h3>
+
+          <div class="theory-block">
+            <h4 style="color:#0284c7;">Incògnita / Variable</h4>
+            <p>Símbol (normalment una lletra com $x$) que representa una quantitat desconeguda que volem descobrir.</p>
+
+            <h4 style="color:#d97706;">Monomi</h4>
+            <p>Expressió algebraica formada pel producte d'un nombre (coeficient) i una o més lletres (part literal). Ex: $4x^2$.</p>
+
+            <h4 style="color:#10b981;">Termes Semblants</h4>
+            <p>Monomis que comparteixen la mateixa part literal exacta. Només entre ells es poden sumar o restar. Ex: $5x$ i $-2x$.</p>
+
+            <h4 style="color:#9333ea;">Equació</h4>
+            <p>Una igualtat entre dues expressions que només és certa per a determinats valors de la incògnita. Ex: $2x + 1 = 7$.</p>
+
+            <h4 style="color:#ef4444;">Parella Zero</h4>
+            <p>La combinació d'un terme positiu i el seu terme oposat idèntic que es neutralitzen donant resultat 0. Ex: $+3$ i $-3$.</p>
+          </div>
+        </div>
+
+        <!-- Orientacions Docents DUA -->
+        <div class="theory-card">
+          <h3 class="card-title">👩‍🏫 Guia d'Atenció a la Diversitat a l'Aula</h3>
+
+          <div class="theory-block">
+            <div class="visual-tip-box" style="margin-top:0;">
+              <strong>🟢 Per a alumnat amb TEL / DIL / Decalatge de 6è:</strong>
+              <ul style="margin-top:0.4rem; padding-left:1.2rem; font-size:0.88rem;">
+                <li>Activa sempre el <em>Mode de Lectura Fàcil</em> i la <em>Síntesi de Veu (🔊)</em> per evitar que les barreres de descodificació lectora frenin el raonament matemàtic.</li>
+                <li>Comença sempre per la <em>Tasca 3 (Àlgebra Tiles)</em> i la <em>Tasca 4 (Balança)</em> abans de passar al simbolisme algebraic formal de paper i llapis.</li>
+                <li>Permet l'ús continuat del simulador de balança per validar la resolució d'equacions.</li>
+              </ul>
+            </div>
+
+            <div class="visual-tip-box blue">
+              <strong>🟡 Per al grup ordinari:</strong>
+              <ul style="margin-top:0.4rem; padding-left:1.2rem; font-size:0.88rem;">
+                <li>Alternar el treball autònom als simuladors amb la verbalització en parelles cooperatives (explicar per què s'inclina la balança o com han deduït el patró).</li>
+                <li>Connectar la Tasca 2 (Diccionari) amb la Tasca 5 (Problemes) per consolidar la fase de plantejament.</li>
+              </ul>
+            </div>
+
+            <div class="visual-tip-box purple">
+              <strong>🔵 Per a Altes Capacitats (Enriquiment):</strong>
+              <ul style="margin-top:0.4rem; padding-left:1.2rem; font-size:0.88rem;">
+                <li>Proposar crear els seus propis patrons geomètrics al simulador per plantejar-los als companys.</li>
+                <li>Abordar equacions amb coeficients fraccionaris i problemes de moviment compost a la Tasca 5.</li>
+                <li>Investigar la relació entre les rajoles $x^2$ i els models geomètrics d'àrees de rectangles i quadrats.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Peu de Pàgina -->
+  <footer class="site-footer">
+    <div style="max-width:1200px; margin:0 auto;">
+      <p style="font-weight:700; color:#f8fafc; margin-bottom:0.4rem;">
+        📐 Àlgebra en Acció! · 2n d'ESO Matemàtiques
+      </p>
+      <p>
+        Projecte educatiu obert sota criteris DUA (Disseny Universal per a l'Aprenentatge). Creat per a la docència pública i inclusiva.
+      </p>
+      <div class="footer-tags">
+        <span class="footer-pill">🟢 Suport NESE (TEL, DIL, Decalatge)</span>
+        <span class="footer-pill">🟡 Currículum 2n d'ESO</span>
+        <span class="footer-pill">🔵 Altes Capacitats</span>
+        <span class="footer-pill">🐙 GitHub Pages</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts dels Simuladors i Aplicació -->
+  <script src="js/simulators/patrons.js"></script>
+  <script src="js/simulators/diccionari.js"></script>
+  <script src="js/simulators/tiles.js"></script>
+  <script src="js/simulators/balanca.js"></script>
+  <script src="js/simulators/problemes.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

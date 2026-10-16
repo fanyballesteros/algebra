@@ -1,0 +1,501 @@
+/* ==========================================================================
+   ÀLGEBRA EN ACCIÓ - 2N D'ESO (DUA & ACCESSiBILITAT)
+   Full d'estils principal
+   ========================================================================== */
+
+:root {
+  /* Colors base */
+  --bg-primary: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f1f5f9;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+  
+  /* Colors semàntics de l'Àlgebra */
+  --color-variable: #0284c7;      /* Blau turquesa per a la incògnita x */
+  --color-variable-bg: #e0f2fe;
+  --color-constant: #d97706;      /* Taronja / Àmbar per als nombres / constants */
+  --color-constant-bg: #fef3c7;
+  --color-positive: #16a34a;      /* Verd per a termes positius / correctes */
+  --color-positive-bg: #dcfce7;
+  --color-negative: #dc2626;      /* Vermell per a termes negatius / alertes */
+  --color-negative-bg: #fee2e2;
+  --color-term2: #9333ea;         /* Púrpura per a termes de 2n grau x² */
+  --color-term2-bg: #f3e8ff;
+
+  /* Colors d'itineraris DUA */
+  --itinerary-support: #059669;
+  --itinerary-standard: #2563eb;
+  --itinerary-challenge: #7c3aed;
+
+  /* Tipografia i dimensions */
+  --font-base: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-dyslexic: "Comic Sans MS", "Chalkboard SE", "Segoe UI", sans-serif;
+  --font-current: var(--font-base);
+  --font-scale: 1rem;
+  --line-height: 1.6;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.07);
+  --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
+  --transition: all 0.25s ease;
+}
+
+/* Mode Lectura Fàcil / Accessibilitat */
+body.easy-read-mode {
+  --font-current: var(--font-dyslexic);
+  --line-height: 1.85;
+  letter-spacing: 0.04em;
+  word-spacing: 0.08em;
+  background-color: #fbfbfa !important;
+  color: #111827 !important;
+}
+
+body.font-lg {
+  --font-scale: 1.15rem;
+}
+
+body.font-xl {
+  --font-scale: 1.3rem;
+}
+
+/* Reset bàsic */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-current);
+  font-size: var(--font-scale);
+  line-height: var(--line-height);
+  color: var(--text-main);
+  background-color: var(--bg-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header & Barra Superior DUA */
+.site-header {
+  background: linear-gradient(135deg, #1e3a8a 0%, #0f766e 100%);
+  color: #ffffff;
+  padding: 1rem 1.5rem 0.5rem;
+  box-shadow: var(--shadow-md);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.brand-icon {
+  font-size: 2.2rem;
+  background: rgba(255,255,255,0.15);
+  padding: 0.3rem 0.6rem;
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(4px);
+}
+
+.brand-text h1 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.brand-text p {
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+/* Barra d'eines DUA / Accessibilitat */
+.dua-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(0, 0, 0, 0.22);
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  flex-wrap: wrap;
+}
+
+.dua-btn {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: var(--transition);
+}
+
+.dua-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.dua-btn.active {
+  background: #ffffff;
+  color: #1e3a8a;
+  border-color: #ffffff;
+}
+
+/* Selector d'Itineraris */
+.itinerary-selector-container {
+  max-width: 1300px;
+  margin: 0.8rem auto 0;
+  padding: 0.6rem 0.8rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.itinerary-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.itinerary-pills {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.itinerary-pill {
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: var(--transition);
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.itinerary-pill:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.itinerary-pill.support.active {
+  background: #10b981;
+  color: #ffffff;
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.6);
+}
+
+.itinerary-pill.standard.active {
+  background: #3b82f6;
+  color: #ffffff;
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.6);
+}
+
+.itinerary-pill.challenge.active {
+  background: #8b5cf6;
+  color: #ffffff;
+  box-shadow: 0 0 12px rgba(139, 92, 246, 0.6);
+}
+
+/* Barra de navegació principal de tasques */
+.main-nav {
+  background: #ffffff;
+  border-bottom: 2px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  overflow-x: auto;
+}
+
+.nav-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  gap: 0.2rem;
+  padding: 0 1rem;
+}
+
+.nav-item {
+  padding: 0.9rem 1.1rem;
+  text-decoration: none;
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-bottom: 3px solid transparent;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.nav-item:hover {
+  color: var(--color-variable);
+  background: #f8fafc;
+}
+
+.nav-item.active {
+  color: var(--color-variable);
+  border-bottom-color: var(--color-variable);
+  background: #f0f9ff;
+}
+
+/* Cos principal */
+.main-content {
+  max-width: 1300px;
+  margin: 1.5rem auto 3rem;
+  padding: 0 1.2rem;
+  flex: 1;
+  width: 100%;
+}
+
+.tab-pane {
+  display: none;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.tab-pane.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Seccions i targetes de tasca */
+.task-header-box {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border: 1px solid var(--border-color);
+  border-left: 6px solid var(--color-variable);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.task-badge-row {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  margin-bottom: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.task-tag {
+  background: #e0f2fe;
+  color: #0369a1;
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.task-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+}
+
+.task-description {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+}
+
+/* Estructura en 2 columnes: Consulta + Simulador */
+.task-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: 1.8rem;
+  align-items: start;
+}
+
+@media (max-width: 992px) {
+  .task-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Targeta de material de consulta */
+.theory-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.4rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #0f172a;
+  border-bottom: 2px solid #f1f5f9;
+  padding-bottom: 0.6rem;
+}
+
+.theory-block {
+  margin-bottom: 1.2rem;
+}
+
+.theory-block h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #334155;
+  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.theory-block p, .theory-block li {
+  font-size: 0.95rem;
+  color: #475569;
+  margin-bottom: 0.5rem;
+}
+
+.theory-block ul {
+  padding-left: 1.3rem;
+  margin-bottom: 0.8rem;
+}
+
+/* Caixes de suport visual / Regles d'or */
+.visual-tip-box {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-left: 4px solid #16a34a;
+  padding: 0.9rem;
+  border-radius: var(--radius-sm);
+  margin: 1rem 0;
+  font-size: 0.92rem;
+}
+
+.visual-tip-box.blue {
+  background: #f0f9ff;
+  border-color: #bae6fd;
+  border-left-color: #0284c7;
+}
+
+.visual-tip-box.purple {
+  background: #faf5ff;
+  border-color: #e9d5ff;
+  border-left-color: #9333ea;
+}
+
+/* Elements d'itineraris dinàmics */
+.route-section {
+  transition: var(--transition);
+}
+
+.route-section.support-content {
+  border-left: 3px solid var(--itinerary-support);
+  padding-left: 0.8rem;
+}
+
+.route-section.challenge-content {
+  border-left: 3px solid var(--itinerary-challenge);
+  padding-left: 0.8rem;
+}
+
+/* Simulador Container */
+.simulator-card {
+  background: var(--bg-card);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.4rem;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+}
+
+.simulator-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.sim-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Footer */
+.site-footer {
+  background: #0f172a;
+  color: #94a3b8;
+  padding: 2rem 1rem;
+  margin-top: auto;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.site-footer a {
+  color: #38bdf8;
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+}
+
+.footer-tags {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-top: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.footer-pill {
+  background: rgba(255,255,255,0.1);
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+}
